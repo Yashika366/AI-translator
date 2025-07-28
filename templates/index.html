@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Translator</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f8;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 50px;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            width: 400px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        textarea, select {
+            resize: none;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 16px;
+            background: #af6d4c;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #a07545;
+        }
+
+        .output {
+            margin-top: 30px;
+            background: #fff;
+            padding: 20px;
+            width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .output h3 {
+            color: #333;
+        }
+
+        .output p {
+            font-size: 18px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h2>🌍 Multilingual AI Translator</h2>
+    <form method="post">
+        <label for="language">Select Language:</label>
+        <select name="language" required>
+            <option value="en" {% if selected_language == 'en' %}selected{% endif %}>English</option>
+            <option value="fr" {% if selected_language == 'fr' %}selected{% endif %}>French</option>
+            <option value="es" {% if selected_language == 'es' %}selected{% endif %}>Spanish</option>
+            <option value="de" {% if selected_language == 'de' %}selected{% endif %}>German</option>
+            <option value="it" {% if selected_language == 'it' %}selected{% endif %}>Italian</option>
+        </select>
+
+        <textarea name="text" rows="4" placeholder="Enter text to translate..."></textarea>
+        <button type="submit">Translate</button>
+    </form>
+
+    {% if translated_text %}
+    <div class="output">
+        <h3>Translated Text:</h3>
+        <p>{{ translated_text }}</p>
+    </div>
+    {% endif %}
+</body>
+</html>
